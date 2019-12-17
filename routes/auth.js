@@ -3,6 +3,7 @@ const router = express.Router();
 
 const userService = require('../database/user/userService')
 
+//สมัครสมาชิก
 router.post('/register', (req, res, next) => {
   if (req.body.constructor === Object && Object.keys(req.body).length === 0) {
     res.json({
@@ -25,6 +26,7 @@ router.post('/register', (req, res, next) => {
   }
 });
 
+//เข้าสู่ระบบ
 router.post('/login', (req, res, next) => {
   if (req.body.constructor === Object && Object.keys(req.body).length === 0) {
     res.json({
@@ -45,6 +47,8 @@ router.post('/login', (req, res, next) => {
       message: "wrong username or password"
     });
   } else {
+
+    //resp เป็น JWT
     res.json({
       status: 200,
       data: {

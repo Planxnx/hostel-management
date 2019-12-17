@@ -3,6 +3,8 @@ const bookingData = require('./booking.json');
 
 const getList = () => {
     let hotelList = []
+
+    //ดึงมาเฉพาะข้อมูลบางส่วน
     for ( hotel of hotelData) {
         hotelList.push({
             name: hotel.name,

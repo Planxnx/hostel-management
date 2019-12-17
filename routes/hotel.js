@@ -38,7 +38,7 @@ router.get('/available', (req, res, next) => {
   });
 });
 
-//ดูรายชื่อโรงแรมที่จอง โดยใช้ username ใน Token
+//ดูรายชื่อโรงแรมที่จอง โดยใช้ username ใน Token และมี Middleware คอยเช็ค Token 
 router.get('/booking', JWTAuthMiddleware.userAuth, (req, res, next) => {
   let tokenArray = req.headers.authorization.split(" ")
   let decoded =jwt.verify(tokenArray[1], config.secret)

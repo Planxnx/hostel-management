@@ -1,18 +1,21 @@
 const fs = require('fs');
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
-
+const config = require('../../config.json')
 
 const userData = require('./user.json');
 
+//เช็คว่าีผู้ใช้นี้ไหม
 const checkUser = (username) => {
     return userData.find(element => element.username == username) != undefined ;
 }
 
+//เช็คว่ามีอีเมล์นี้ไหม
 const checkEmail = (email) => {
     return userData.find(element => element.email == email) != undefined ;
 }
 
+//สร้างผู้ใช้ใหม่
 const createUser = (user) => {
     if(checkUser(user.username)){
         return 'username is already taken'
@@ -27,13 +30,12 @@ const createUser = (user) => {
     console.log(userData);
     userData.push({
         "username": user.username,
-        "password":  bcrypt.hashSync(user.password, 10),
+        "password":  bcrypt.hashSync(user.password, 10), //เข้ารหัสด้วย bcrypt
         "name" : user.name,
         "lastname" : user.lastname,
         "birthDate": user.birthDate,
         "email": user. email
     })
-    console.log(userData);
     fs.writeFileSync('./database/user/user.json', JSON.stringify(userData));
     return "success"
 }
@@ -44,12 +46,12 @@ const authenticate = ({
 }) => {
     let user = userData.find(element => element.username == username)
 
-    if (user && bcrypt.compareSync(password, user.password)) {
+    if (user && bcrypt.compareSync(password, user.password)) { 
         const payload = {
             username: username,
             iat: new Date().getTime() //iatมาจากคำว่า issued at time (สร้างเมื่อ)
         };
-        let token = jwt.sign(payload, "PLANX-SECRET")
+        let token = jwt.sign(payload, config.secret) //สร้าง JWT
         return {
             username,
             token
