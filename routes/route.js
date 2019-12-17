@@ -5,10 +5,10 @@ const hotelRoute = require('./hotel');
 
 router.use('/hotel', hotelRoute);
 
-router.get('/healthcheck', function(req, res, next) {
+router.get('/healthcheck', (req, res, next) => {
   res.json({
     status:200,
-    message:"available"
+    message:"ok"
   });
 });
 
