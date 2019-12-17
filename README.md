@@ -3,9 +3,9 @@
 </h3>
 
 ### Functional
-- List Hotel (Show Name, Price, Detail)
+- List All Hotel 
 - List Available Hotel
-- Hotel Info (Show Name, Price, Detail, Map, Room)
+- Hotel Info
 - Login by using username and password.
-- Register (eg. Name, Last Name, Birth Data, and email)
+- Register 
 - Booking (Can Booking, Show My Booking)
