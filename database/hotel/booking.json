@@ -1,0 +1,17 @@
+[
+    {
+        "id": 1,
+        "username": "planxthanee",
+        "hotelId": 2,
+        "roomAmount" : 10,
+        "checkinDate": "20/01/2020",
+        "checkoutDate": "22/01/2020"
+    },{
+        "id": 2,
+        "username": "planxthanee",
+        "hotelId": 1,
+        "roomAmount" : 5,
+        "checkinDate": "23/01/2020",
+        "checkoutDate": "24/01/2020"
+    }
+]

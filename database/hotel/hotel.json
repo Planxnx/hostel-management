@@ -1,6 +1,6 @@
 [
     {
-        "id": "001",
+        "id": 1,
         "name": "A Hostel",
         "price": 1000,
         "detail" : {
@@ -8,12 +8,12 @@
             "description" : "luxury room , free breakfast , swimming pool"
         },
         "room":{
-            "available" : 20,
-            "total" : 30
+            "available" : 15,
+            "total" : 20
         },
         "map": "https://goo.gl/maps/MzF4qjs19CtTkzpw9"
     },{
-        "id": "002",
+        "id": 2,
         "name": "B Hostel",
         "price": 800,
         "detail" : {
@@ -21,12 +21,12 @@
             "description" : "free breakfast , swimming pool , near MRT"
         },
         "room":{
-            "available" : 15,
-            "total" : 15
+            "available" : 10,
+            "total" : 10
         },
         "map": "https://goo.gl/maps/MzF4qjs19CtTkzpw9"
     },{
-        "id": "003",
+        "id": 3,
         "name": "C Hostel",
         "price": 300,
         "detail" : {
