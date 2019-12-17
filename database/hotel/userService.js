@@ -14,6 +14,9 @@ const checkEmail = (email) => {
 }
 
 const createUser = (user) => {
+    if(!user){
+        return 'not found data'
+    }
     if(checkUser(user.username)){
         return 'username is already taken'
     }
@@ -33,9 +36,32 @@ const createUser = (user) => {
         "email": user. email
     })
     fs.writeFileSync('./user.json', JSON.stringify(userData));
+    
+    return "success"
+}
+
+const authenticate = ({
+    username,
+    password
+}) => {
+    let user = userData.find(element => element.username == username)
+
+    if (user && bcrypt.compareSync(password, user.password)) {
+        const payload = {
+            username: username,
+            iat: new Date().getTime() //iatมาจากคำว่า issued at time (สร้างเมื่อ)
+        };
+        let token = jwt.sign(payload, "PLANX-SECRET")
+        return {
+            username,
+            token
+        }
+    }
+    return false
 }
 
 module.exports = {
+    authenticate,
     createUser,
     checkUser,
     checkEmail
