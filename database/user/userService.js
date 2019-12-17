@@ -14,19 +14,17 @@ const checkEmail = (email) => {
 }
 
 const createUser = (user) => {
-    if(user){
-        return 'not found data'
-    }
     if(checkUser(user.username)){
         return 'username is already taken'
     }
     if(checkEmail(user.email)){
         return 'email is already taken'
     }
-    if(user.password == user.repassword){
+    if(user.password != user.repassword){
         return 'confirm password and password do not match'
     }
 
+    console.log(userData);
     userData.push({
         "username": user.username,
         "password":  bcrypt.hashSync(user.password, 10),
@@ -35,8 +33,8 @@ const createUser = (user) => {
         "birthDate": user.birthDate,
         "email": user. email
     })
-    fs.writeFileSync('./user.json', JSON.stringify(userData));
-    
+    console.log(userData);
+    fs.writeFileSync('./database/user/user.json', JSON.stringify(userData));
     return "success"
 }
 
