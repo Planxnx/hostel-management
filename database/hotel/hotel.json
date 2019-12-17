@@ -17,12 +17,12 @@
         "name": "B Hostel",
         "price": 800,
         "detail" : {
-            "status" : "available",
-            "description" : "free breakfast , swimming pool"
+            "status" : "full",
+            "description" : "free breakfast , swimming pool , near MRT"
         },
         "room":{
             "available" : 15,
-            "total" : 30
+            "total" : 15
         },
         "map": "https://goo.gl/maps/MzF4qjs19CtTkzpw9"
     },{
