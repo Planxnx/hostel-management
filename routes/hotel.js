@@ -10,10 +10,17 @@ router.get('/', (req, res, next) => {
     });
 });
 
-router.get('/:id', (req, res, next) => {
+router.get('/info/:id', (req, res, next) => {
   res.json({
     status: 200,
     data: hotelService.getHotel(req.params.id)
+  });
+});
+
+router.get('/available', (req, res, next) => {
+  res.json({
+    status: 200,
+    data: hotelService.getAvailableHotel()
   });
 });
 

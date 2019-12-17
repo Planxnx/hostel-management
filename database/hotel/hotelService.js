@@ -16,7 +16,12 @@ const getHotel = (id) => {
     return hotelData.find(hotel => hotel.id == id)
 }
 
+const getAvailableHotel = () => {
+    return hotelData.filter(hotel => hotel.detail.status == "available")
+}
+
 module.exports = {
     getList,
-    getHotel
+    getHotel,
+    getAvailableHotel
 };
