@@ -1,4 +1,5 @@
 const hotelData = require('./hotel.json');
+const bookingData = require('./booking.json');
 
 const getList = () => {
     let hotelList = []
@@ -20,8 +21,13 @@ const getAvailableHotel = () => {
     return hotelData.filter(hotel => hotel.detail.status == "available")
 }
 
+const getMyBooking = (username) => {
+    return bookingData.filter(booking => booking.username == username)
+}
+
 module.exports = {
     getList,
     getHotel,
-    getAvailableHotel
+    getAvailableHotel,
+    getMyBooking
 };
