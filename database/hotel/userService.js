@@ -14,7 +14,7 @@ const checkEmail = (email) => {
 }
 
 const createUser = (user) => {
-    if(!user){
+    if(user){
         return 'not found data'
     }
     if(checkUser(user.username)){
