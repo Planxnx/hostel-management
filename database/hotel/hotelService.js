@@ -12,6 +12,11 @@ const getList = () => {
     return hotelList
 }
 
+const getHotel = (id) => {
+    return hotelData.find(hotel => hotel.id == id)
+}
+
 module.exports = {
-    getList
+    getList,
+    getHotel
 };

@@ -10,4 +10,11 @@ router.get('/', (req, res, next) => {
     });
 });
 
+router.get('/:id', (req, res, next) => {
+  res.json({
+    status: 200,
+    data: hotelService.getHotel(req.params.id)
+  });
+});
+
 module.exports = router;
