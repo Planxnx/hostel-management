@@ -1,0 +1,42 @@
+[
+    {
+        "id": "001",
+        "name": "A Hostel",
+        "price": 1000,
+        "detail" : {
+            "status" : "available",
+            "description" : "luxury room , free breakfast , swimming pool"
+        },
+        "room":{
+            "available" : 20,
+            "total" : 30
+        },
+        "map": "https://goo.gl/maps/MzF4qjs19CtTkzpw9"
+    },{
+        "id": "002",
+        "name": "B Hostel",
+        "price": 800,
+        "detail" : {
+            "status" : "available",
+            "description" : "free breakfast , swimming pool"
+        },
+        "room":{
+            "available" : 15,
+            "total" : 30
+        },
+        "map": "https://goo.gl/maps/MzF4qjs19CtTkzpw9"
+    },{
+        "id": "003",
+        "name": "C Hostel",
+        "price": 300,
+        "detail" : {
+            "status" : "available",
+            "description" : "poor room"
+        },
+        "room":{
+            "available" : 20,
+            "total" : 20
+        },
+        "map": "https://goo.gl/maps/MzF4qjs19CtTkzpw9"
+    }
+]
