@@ -48,4 +48,24 @@ router.get('/booking', JWTAuthMiddleware.userAuth, (req, res, next) => {
   });
 });
 
+router.post('/booking', JWTAuthMiddleware.userAuth, (req, res, next) => {
+  let tokenArray = req.headers.authorization.split(" ")
+  let decoded =jwt.verify(tokenArray[1], config.secret)
+  let bookingStatus = hotelService.createBooking(decoded.username,req.body.hotelId,req.body.detail)
+
+  if(bookingStatus == "room amount is not enough") {
+    res.json({
+      status: 400,
+      message: bookingStatus
+    });
+  } else {
+    res.json({
+      status: 200,
+      bookingId: bookingStatus
+    });
+  }
+ 
+  
+});
+
 module.exports = router;
