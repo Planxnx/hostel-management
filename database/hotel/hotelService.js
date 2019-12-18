@@ -2,6 +2,10 @@ const fs = require('fs');
 const hotelData = require('./hotel.json');
 const bookingData = require('./booking.json');
 
+const checkHotel = (name) => {
+    return hotelData.find(hotel => hotel.name == name) != undefined ;
+}
+
 const getList = () => {
     let hotelList = []
 
@@ -30,12 +34,15 @@ const getMyBooking = (username) => {
 
 //อัพเดทจำนวนห้องที่ว่าง กับ สถานะของโรงแรม
 const updateRoomAmount = (hotel,amount) => {
+    //ลบข้อมูลเดิมแล้วใส่ของให่เข้าไป
     let index = hotelData.indexOf(hotel)
     hotelData.splice(index, 1)
 
     hotel.room.available -= amount
-    if(hotel.room.available == 0){
+    if(hotel.room.available <= 0){
         hotel.detail.status = "full"
+    } else {
+        hotel.detail.status = "available"
     }
 
     hotelData.push(hotel)
@@ -66,10 +73,29 @@ const createBooking = (username,hotelId,detail) => {
     return id
 }
 
+const createHotel = (hotel,username) => {
+    if(checkHotel(hotel.name)){
+        return 'hotel name is already taken'
+    }
+
+    if(hotel.room.available <= 0){
+        hotel.detail.status = "full"
+    } else {
+        hotel.detail.status = "available"
+    }
+
+    hotel.id = hotelData.length+1
+    hotel.createBy = username
+    hotelData.push(hotel)
+    fs.writeFileSync('./database/hotel/hotel.json', JSON.stringify(hotelData));
+    return "success"
+}
+
 module.exports = {
     getList,
     getHotel,
     getAvailableHotel,
     getMyBooking,
-    createBooking
+    createBooking,
+    createHotel
 };

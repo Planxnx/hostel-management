@@ -13,6 +13,34 @@ router.get('/', (req, res, next) => {
     });
 });
 
+//เพิ่มโรงแรม
+router.post('/',JWTAuthMiddleware.userAuth, (req, res, next) => {
+  if (Object.keys(req.body).length === 0) {
+    res.json({
+      status: 400,
+      message: "not found data"
+    });
+    return
+  }
+  
+  let tokenArray = req.headers.authorization.split(" ")
+  let decoded =jwt.verify(tokenArray[1], config.secret) //ถอดรหัสเพื่อเอา Payload ไปใช้งาน
+
+  let createStatus = hotelService.createHotel(req.body,decoded.username)
+  if (createStatus == "success"){
+    res.json({
+      status: 200,
+      message: "success" 
+    });
+  } else {
+    res.json({
+      status: 400,
+      message: createStatus 
+    });
+  }
+  
+});
+
 //ดูข้อมูลโรงแรม จาก id
 router.get('/info/:id', (req, res, next) => {
   let hotelInfo = hotelService.getHotel(req.params.id)
@@ -66,8 +94,6 @@ router.post('/booking', JWTAuthMiddleware.userAuth, (req, res, next) => {
       bookingId: bookingStatus
     });
   }
- 
-  
 });
 
 module.exports = router;
