@@ -10,3 +10,7 @@
 - Login by using username and password (JWT)
 - Register (Validate the duplicate email and username)
 - Booking (Can Booking, Show My Booking)
+
+### Documentation
+* [API Documentation](api-documentation.md)
+
