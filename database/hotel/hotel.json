@@ -14,7 +14,8 @@
         "address":"219/23 Asoke Tower, 7 floors, Soi Sukhumvit 21, Khlong Toei Nuea, Watthana, Bangkok 10110",
         "latitude":"13.7455597",
         "longitude":"100.5622945"
-    }
+    },
+    "createBy": "planxthanee"
 }, {
     "id": 2,
     "name": "B Hostel",
@@ -31,7 +32,8 @@
         "address":"219/23 Asoke Tower, 7 floors, Soi Sukhumvit 21, Khlong Toei Nuea, Watthana, Bangkok 10110",
         "latitude":"13.7455597",
         "longitude":"100.5622945"
-    }
+    },
+    "createBy": "planxthanee"
 }, {
     "id": 3,
     "name": "C Hostel",
@@ -48,7 +50,8 @@
         "address":"219/23 Asoke Tower, 7 floors, Soi Sukhumvit 21, Khlong Toei Nuea, Watthana, Bangkok 10110",
         "latitude":"13.7455597",
         "longitude":"100.5622945"
-    }
+    },
+    "createBy": "planxthanee"
 }, {
     "id": 4,
     "name": "D Hostel",
@@ -65,5 +68,6 @@
         "address":"219/23 Asoke Tower, 7 floors, Soi Sukhumvit 21, Khlong Toei Nuea, Watthana, Bangkok 10110",
         "latitude":"13.7455597",
         "longitude":"100.5622945"
-    }
+    },
+    "createBy": "planxthanee"
 }]
