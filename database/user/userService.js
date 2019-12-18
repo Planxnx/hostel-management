@@ -5,7 +5,7 @@ const config = require('../../config.json')
 
 const userData = require('./user.json');
 
-//เช็คว่าีผู้ใช้นี้ไหม
+//เช็คว่าผู้ใช้นี้ไหม
 const checkUser = (username) => {
     return userData.find(element => element.username == username) != undefined ;
 }
@@ -17,6 +17,7 @@ const checkEmail = (email) => {
 
 //สร้างผู้ใช้ใหม่
 const createUser = (user) => {
+    //validate
     if(checkUser(user.username)){
         return 'username is already taken'
     }
@@ -27,7 +28,6 @@ const createUser = (user) => {
         return 'confirm password and password do not match'
     }
 
-    console.log(userData);
     userData.push({
         "username": user.username,
         "password":  bcrypt.hashSync(user.password, 10), //เข้ารหัสด้วย bcrypt
@@ -40,6 +40,7 @@ const createUser = (user) => {
     return "success"
 }
 
+//เข้าสู่ระบบ รีเทริน token
 const authenticate = ({
     username,
     password
