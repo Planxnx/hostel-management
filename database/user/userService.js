@@ -7,34 +7,34 @@ const userData = require('./user.json');
 
 //เช็คว่าผู้ใช้นี้ไหม
 const checkUser = (username) => {
-    return userData.find(element => element.username == username) != undefined ;
+    return userData.find(element => element.username == username) != undefined;
 }
 
 //เช็คว่ามีอีเมล์นี้ไหม
 const checkEmail = (email) => {
-    return userData.find(element => element.email == email) != undefined ;
+    return userData.find(element => element.email == email) != undefined;
 }
 
 //สร้างผู้ใช้ใหม่
 const createUser = (user) => {
     //validate
-    if(checkUser(user.username)){
+    if (checkUser(user.username)) {
         return 'username is already taken'
     }
-    if(checkEmail(user.email)){
+    if (checkEmail(user.email)) {
         return 'email is already taken'
     }
-    if(user.password != user.repassword){
+    if (user.password != user.repassword) {
         return 'confirm password and password do not match'
     }
 
     userData.push({
         "username": user.username,
-        "password":  bcrypt.hashSync(user.password, 10), //เข้ารหัสด้วย bcrypt
-        "name" : user.name,
-        "lastname" : user.lastname,
+        "password": bcrypt.hashSync(user.password, 10), //เข้ารหัสด้วย bcrypt
+        "name": user.name,
+        "lastname": user.lastname,
         "birthDate": user.birthDate,
-        "email": user. email
+        "email": user.email
     })
     fs.writeFileSync('./database/user/user.json', JSON.stringify(userData));
     return "success"
@@ -47,7 +47,7 @@ const authenticate = ({
 }) => {
     let user = userData.find(element => element.username == username)
 
-    if (user && bcrypt.compareSync(password, user.password)) { 
+    if (user && bcrypt.compareSync(password, user.password)) {
         const payload = {
             username: username,
             iat: new Date().getTime() //iatมาจากคำว่า issued at time (สร้างเมื่อ)

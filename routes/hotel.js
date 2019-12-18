@@ -7,14 +7,14 @@ const hotelService = require('../database/hotel/hotelService')
 
 //ดูรายชื่อโรงแรมทั้งหมด
 router.get('/', (req, res, next) => {
-    res.json({
-      status: 200,
-      data: hotelService.getList()
-    });
+  res.json({
+    status: 200,
+    data: hotelService.getList()
+  });
 });
 
 //เพิ่มโรงแรม
-router.post('/',JWTAuthMiddleware.userAuth, (req, res, next) => {
+router.post('/', JWTAuthMiddleware.userAuth, (req, res, next) => {
   if (Object.keys(req.body).length === 0) {
     res.json({
       status: 400,
@@ -22,29 +22,29 @@ router.post('/',JWTAuthMiddleware.userAuth, (req, res, next) => {
     });
     return
   }
-  
-  let tokenArray = req.headers.authorization.split(" ")
-  let decoded =jwt.verify(tokenArray[1], config.secret) //ถอดรหัสเพื่อเอา Payload ไปใช้งาน
 
-  let createStatus = hotelService.createHotel(req.body,decoded.username)
-  if (createStatus == "success"){
+  let tokenArray = req.headers.authorization.split(" ")
+  let decoded = jwt.verify(tokenArray[1], config.secret) //ถอดรหัสเพื่อเอา Payload ไปใช้งาน
+
+  let createStatus = hotelService.createHotel(req.body, decoded.username)
+  if (createStatus == "success") {
     res.json({
       status: 200,
-      message: "success" 
+      message: "success"
     });
   } else {
     res.json({
       status: 400,
-      message: createStatus 
+      message: createStatus
     });
   }
-  
+
 });
 
 //ดูข้อมูลโรงแรม จาก id
 router.get('/info/:id', (req, res, next) => {
   let hotelInfo = hotelService.getHotel(req.params.id)
-  if (hotelInfo){
+  if (hotelInfo) {
     res.json({
       status: 200,
       data: hotelInfo
@@ -55,7 +55,7 @@ router.get('/info/:id', (req, res, next) => {
       message: "hotel not found"
     });
   }
-  
+
 });
 
 //ดูรายการโรงแรมที่มีห้องว่าง
@@ -70,7 +70,7 @@ router.get('/available', (req, res, next) => {
 router.get('/booking', JWTAuthMiddleware.userAuth, (req, res, next) => {
   //ตัด Bearer ใน Header ออก
   let tokenArray = req.headers.authorization.split(" ")
-  let decoded =jwt.verify(tokenArray[1], config.secret) //ถอดรหัสเพื่อเอา Payload ไปใช้งาน
+  let decoded = jwt.verify(tokenArray[1], config.secret) //ถอดรหัสเพื่อเอา Payload ไปใช้งาน
   res.json({
     status: 200,
     data: hotelService.getMyBooking(decoded.username)
@@ -80,10 +80,10 @@ router.get('/booking', JWTAuthMiddleware.userAuth, (req, res, next) => {
 //จองโรงแรม โดยใช้ username ใน Token และมี Middleware คอยเช็ค Token 
 router.post('/booking', JWTAuthMiddleware.userAuth, (req, res, next) => {
   let tokenArray = req.headers.authorization.split(" ")
-  let decoded =jwt.verify(tokenArray[1], config.secret)
-  let bookingStatus = hotelService.createBooking(decoded.username,req.body.hotelId,req.body.detail)
+  let decoded = jwt.verify(tokenArray[1], config.secret)
+  let bookingStatus = hotelService.createBooking(decoded.username, req.body.hotelId, req.body.detail)
 
-  if(bookingStatus == "room amount is not enough") {
+  if (bookingStatus == "room amount is not enough") {
     res.json({
       status: 400,
       message: bookingStatus
