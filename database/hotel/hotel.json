@@ -10,7 +10,11 @@
         "available": 15,
         "total": 20
     },
-    "map": "https://goo.gl/maps/MzF4qjs19CtTkzpw9"
+    "map": {
+        "address":"219/23 Asoke Tower, 7 floors, Soi Sukhumvit 21, Khlong Toei Nuea, Watthana, Bangkok 10110",
+        "latitude":"13.7455597",
+        "longitude":"100.5622945"
+    }
 }, {
     "id": 2,
     "name": "B Hostel",
@@ -20,10 +24,14 @@
         "description": "free breakfast , swimming pool , near MRT"
     },
     "room": {
-        "available": 10,
+        "available": 0,
         "total": 10
     },
-    "map": "https://goo.gl/maps/MzF4qjs19CtTkzpw9"
+    "map": {
+        "address":"219/23 Asoke Tower, 7 floors, Soi Sukhumvit 21, Khlong Toei Nuea, Watthana, Bangkok 10110",
+        "latitude":"13.7455597",
+        "longitude":"100.5622945"
+    }
 }, {
     "id": 3,
     "name": "C Hostel",
@@ -36,5 +44,26 @@
         "available": 20,
         "total": 20
     },
-    "map": "https://goo.gl/maps/MzF4qjs19CtTkzpw9"
+    "map": {
+        "address":"219/23 Asoke Tower, 7 floors, Soi Sukhumvit 21, Khlong Toei Nuea, Watthana, Bangkok 10110",
+        "latitude":"13.7455597",
+        "longitude":"100.5622945"
+    }
+}, {
+    "id": 4,
+    "name": "D Hostel",
+    "price": 1500,
+    "detail": {
+        "status": "available",
+        "description": "modern room, free breakfast, rooftop bar , swimming pool"
+    },
+    "room": {
+        "available": 50,
+        "total": 50
+    },
+    "map": {
+        "address":"219/23 Asoke Tower, 7 floors, Soi Sukhumvit 21, Khlong Toei Nuea, Watthana, Bangkok 10110",
+        "latitude":"13.7455597",
+        "longitude":"100.5622945"
+    }
 }]
