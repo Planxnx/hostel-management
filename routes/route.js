@@ -7,6 +7,7 @@ const authRoute = require('./auth');
 router.use('/hotel', hotelRoute);
 router.use('/auth', authRoute);
 
+//สำหรับเช็ค Health ของ API
 router.get('/healthcheck', (req, res, next) => {
   res.json({
     status:200,

@@ -5,7 +5,8 @@ const userService = require('../database/user/userService')
 
 //สมัครสมาชิก
 router.post('/register', (req, res, next) => {
-  if (req.body.constructor === Object && Object.keys(req.body).length === 0) {
+  //validate 
+  if (Object.keys(req.body).length === 0) {
     res.json({
       status: 400,
       message: "not found data"
@@ -28,7 +29,8 @@ router.post('/register', (req, res, next) => {
 
 //เข้าสู่ระบบ
 router.post('/login', (req, res, next) => {
-  if (req.body.constructor === Object && Object.keys(req.body).length === 0) {
+  //validate 
+  if (Object.keys(req.body).length === 0) {
     res.json({
       status: 400,
       message: "not found data"
@@ -47,8 +49,7 @@ router.post('/login', (req, res, next) => {
       message: "wrong username or password"
     });
   } else {
-
-    //resp เป็น JWT
+    // แนบ jwt ไปใน resp
     res.json({
       status: 200,
       data: {

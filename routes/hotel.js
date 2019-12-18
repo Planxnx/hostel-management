@@ -40,14 +40,16 @@ router.get('/available', (req, res, next) => {
 
 //ดูรายชื่อโรงแรมที่จอง โดยใช้ username ใน Token และมี Middleware คอยเช็ค Token 
 router.get('/booking', JWTAuthMiddleware.userAuth, (req, res, next) => {
+  //ตัด Bearer ใน Header ออก
   let tokenArray = req.headers.authorization.split(" ")
-  let decoded =jwt.verify(tokenArray[1], config.secret)
+  let decoded =jwt.verify(tokenArray[1], config.secret) //ถอดรหัสเพื่อเอา Payload ไปใช้งาน
   res.json({
     status: 200,
     data: hotelService.getMyBooking(decoded.username)
   });
 });
 
+//จองโรงแรม โดยใช้ username ใน Token และมี Middleware คอยเช็ค Token 
 router.post('/booking', JWTAuthMiddleware.userAuth, (req, res, next) => {
   let tokenArray = req.headers.authorization.split(" ")
   let decoded =jwt.verify(tokenArray[1], config.secret)
